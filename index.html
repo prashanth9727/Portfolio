@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prashanth C - QA Analyst Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0b1a2b; /* Dark Blue */
+            --secondary-color: #d94bb5; /* Pink/Purple */
+            --accent-color: #007bff; /* Bright Blue */
+            --light-bg: #f4f8f8;
+            --dark-text: #333;
+            --light-text: white;
+            --border-color: #ddd;
+            --shadow-light: 0 4px 8px rgba(0,0,0,0.1);
+            --header-gradient: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background: var(--header-gradient);
+            color: var(--light-text);
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 200%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            transform: rotate(5deg);
+            z-index: 0;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.4em;
+            margin-top: 0;
+            opacity: 0.9;
+        }
+
+        .contact-info-header {
+            margin-top: 20px;
+            font-size: 1.1em;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .contact-info-header a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info-header a:hover {
+            color: var(--accent-color);
+        }
+
+        .contact-info-header i {
+            margin-right: 8px;
+        }
+
+        nav {
+            background-color: var(--primary-color);
+            text-align: center;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: var(--light-text);
+            margin: 0 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s ease, transform 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.3s ease-in-out;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        section {
+            background-color: white;
+            margin: 40px auto;
+            padding: 40px;
+            max-width: 900px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-light);
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0; /* Start hidden for animation */
+        }
+
+        section:nth-of-type(odd) {
+            transform: translateX(-20px);
+        }
+        section:nth-of-type(even) {
+            transform: translateX(20px);
+        }
+        section.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+            font-size: 2.2em;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        h3 {
+            color: var(--accent-color);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.6em;
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 15px;
+        }
+
+        .summary-text, .section-content p {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: var(--dark-text);
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.95em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .skill-tag:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .experience-item, .education-item {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+        .experience-item::before, .education-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--secondary-color);
+        }
+
+        .experience-item:hover, .education-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .experience-item h4, .education-item h4 {
+            margin: 0 0 5px 0;
+            color: var(--primary-color);
+            font-size: 1.3em;
+        }
+
+        .experience-item .company, .education-item .institution {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 5px;
+            font-size: 1em;
+        }
+
+        .experience-item .duration, .education-item .duration {
+            font-size: 0.9em;
+            color: #777;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .experience-item ul {
+            list-style: disc;
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .experience-item ul li {
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+            font-size: 0.9em;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+        }
+
+        footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideInFromLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideInFromRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+            header p {
+                font-size: 1.1em;
+            }
+            nav a {
+                margin: 0 10px;
+                font-size: 1em;
+            }
+            section {
+                padding: 25px;
+                margin: 30px auto;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            h3 {
+                font-size: 1.4em;
+            }
+            .contact-info-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2em;
+            }
+            header p {
+                font-size: 1em;
+            }
+            nav {
+                padding: 10px 0;
+            }
+            nav a {
+                display: block;
+                margin: 8px 0;
+            }
+            section {
+                padding: 15px;
+            }
+            .skill-tag {
+                font-size: 0.85em;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>Prashanth C</h1>
+            <p>QA Analyst | Building Quality Software Experiences</p>
+            <div class="contact-info-header">
+                <span><i class="fas fa-map-marker-alt"></i> Chantilly, VA</span>
+                <span><i class="fas fa-phone"></i> +1 227 204-9578</span>
+                <span><i class="fas fa-envelope"></i> <a href="mailto:prash8687@gmail.com">prash8687@gmail.com</a></span>
+                <span><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank">LinkedIn</a></span>
+                </div>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p class="summary-text">
+                [cite_start]QA Analyst with 4.5+ years of experience in manual and API testing across finance, healthcare, and eCommerce platforms. [cite: 4]
+                [cite_start]Skilled in writing 200+ test cases, validating REST APIs with Postman, logging 100+ defects using JIRA, and supporting UAT with business teams. [cite: 5]
+                [cite_start]Hands-on with SQL, Agile workflows, and tools like TestRail, Zephyr, and HP ALM. [cite: 6]
+                Based in Virginia with U.S. Green Card status. [cite_start]Open to remote, hybrid, or on-site roles in QA or software testing. [cite: 7]
+            </p>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <span class="skill-tag">Functional Testing</span>
+                <span class="skill-tag">Regression Testing</span>
+                <span class="skill-tag">Integration Testing</span>
+                <span class="skill-tag">UAT</span>
+                <span class="skill-tag">Exploratory Testing</span>
+                <span class="skill-tag">Cross-browser Testing</span>
+                <span class="skill-tag">API Testing</span>
+                <span class="skill-tag">Postman</span>
+                <span class="skill-tag">Swagger</span>
+                <span class="skill-tag">REST APIs</span>
+                <span class="skill-tag">JSON</span>
+                <span class="skill-tag">XML</span>
+                <span class="skill-tag">OAuth2/Bearer Auth</span>
+                <span class="skill-tag">JIRA</span>
+                <span class="skill-tag">Bugzilla</span>
+                <span class="skill-tag">ServiceNow</span>
+                <span class="skill-tag">TestRail</span>
+                <span class="skill-tag">Zephyr</span>
+                <span class="skill-tag">HP ALM</span>
+                <span class="skill-tag">QTest</span>
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">MySQL</span>
+                <span class="skill-tag">SQL Server</span>
+                <span class="skill-tag">Chrome DevTools</span>
+                <span class="skill-tag">Responsive Testing</span>
+                <span class="skill-tag">Mobile Simulators</span>
+                <span class="skill-tag">Agile (Scrum/Kanban)</span>
+                <span class="skill-tag">Waterfall</span>
+                <span class="skill-tag">Sprint Ceremonies</span>
+                <span class="skill-tag">UAT Cycles</span>
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">GitHub</span>
+                <span class="skill-tag">Bitbucket</span>
+                <span class="skill-tag">Confluence</span>
+                <span class="skill-tag">MS Excel</span>
+                <span class="skill-tag">SharePoint</span>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Professional Experience</h2>
+
+            <div class="experience-item">
+                <h4>QA Analyst</h4>
+                <p class="company">Capital One, VA, US</p>
+                [cite_start]<span class="duration">Jul 2024 - Current [cite: 19]</span>
+                <ul>
+                    [cite_start]<li>Authored 200+ manual test cases in TestRail for login, transaction, and fraud modules, ensuring 100% functional coverage for multiple releases across responsive and desktop web platforms. [cite: 21]</li>
+                    [cite_start]<li>Tested REST APIs for account services using Postman, accelerating regression cycle by 30% through OAuth2-based request validations, sandbox response verifications, and status code checks across UAT and QA environments. [cite: 22]</li>
+                    [cite_start]<li>Logged 100+ functional and UI defects in JIRA; analyzed retests and helped close high-priority bugs within sprint deadlines, reducing UAT blockers by over 40%. [cite: 23]</li>
+                    [cite_start]<li>Led UAT testing by reviewing business scenarios, running validation cycles with stakeholders, and documenting feedback in Confluence for compliance reporting and test sign-off. [cite: 24]</li>
+                    [cite_start]<li>Participated in 10+ Agile sprints; drove regression cycles, collaborated in bug triage meetings, and communicated QA risks with product managers and developers across multiple web and API-based teams. [cite: 25]</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h4>QA Analyst</h4>
+                <p class="company">Persistent Systems, India</p>
+                [cite_start]<span class="duration">Aug 2021 - Dec 2023 [cite: 26]</span>
+                <ul>
+                    [cite_start]<li>Developed and analyzed 250+ test cases in HP ALM and Zephyr, covering rules engine, policy eligibility, and premium calculations for a health insurance claims platform. [cite: 28]</li>
+                    [cite_start]<li>Conducted API testing with Postman for claims workflows, increasing request/response validation efficiency by 40% through token checks, payload accuracy, and backend verification using SQL assertions. [cite: 29]</li>
+                    [cite_start]<li>Logged and tracked 150+ defects in Bugzilla; verified fix deployments, implemented retests, and updated test reports aligned with sprint-level quality goals and SLAs. [cite: 30]</li>
+                    [cite_start]<li>Participated in 12+ Agile sprints, contributing to sprint planning, backlog grooming, test case design, and retrospective inputs to improve test efficiency and velocity. [cite: 31]</li>
+                    [cite_start]<li>Used MySQL and SQL Server to validate backend data mappings, improving test accuracy by 30% for user eligibility, policy limits, and claims adjudication during regression testing. [cite: 32]</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h4>QA Associate</h4>
+                <p class="company">Wayfair, India</p>
+                [cite_start]<span class="duration">Feb 2020 - Jul 2021 [cite: 33]</span>
+                <ul>
+                    [cite_start]<li>Designed and executed 100+ test cases in TestRail for checkout and cart flows, increasing UI coverage and edge-case validation by 40% across major user journeys. [cite: 35]</li>
+                    [cite_start]<li>Tested REST APIs in Postman for cart and product endpoints, improving API validation accuracy by 35% through structured schema checks, response validation, and integration coverage. [cite: 36]</li>
+                    [cite_start]<li>Logged 80+ bugs in JIRA during regression cycles, enabling 45% faster resolution of critical defects before release through priority tagging, retesting coordination, and QA–dev handoffs. [cite: 37]</li>
+                    [cite_start]<li>Conducted cross-browser testing on Chrome, Firefox, and Edge; ensured 99% layout consistency and stable UX across browsers by validating responsive behavior and viewport alignment. [cite: 38]</li>
+                    [cite_start]<li>Executed mobile testing using simulators to cover iOS and Android workflows, improving mobile checkout defect detection rate by 30% through compatibility testing across form factors. [cite: 39]</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h4>Bachelor’s degree in computer science</h4>
+                <p class="institution">Satavahana University, India</p>
+                [cite_start]<span class="duration">Apr 2019 [cite: 41, 42]</span>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p style="text-align: center; font-size: 1.1em;">
+                I'm currently seeking new opportunities in QA and software testing. Feel free to reach out!
+            </p>
+            <div class="contact-info-header" style="flex-direction: column; align-items: center;">
+                <span><i class="fas fa-envelope"></i> <a href="mailto:prash8687@gmail.com">prash8687@gmail.com</a></span>
+                <span><i class="fas fa-phone"></i> +1 227 204-9578</span>
+                <span><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank">LinkedIn Profile</a></span>
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Prashanth C. All rights reserved.</p>
+        <p>Built with Passion and Quality.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Section reveal on scroll
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.1, // Trigger when 10% of the section is visible
+            rootMargin: '0px 0px -50px 0px' // Adjust margin to fine-tune trigger
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
